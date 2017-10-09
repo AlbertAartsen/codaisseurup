@@ -50,6 +50,8 @@ group :test do
   gem 'capybara', '~> 2.9', '>= 2.9.1'
 end
 
+gem 'devise'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'jquery-rails', '~> 4.3.1'
