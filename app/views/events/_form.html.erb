@@ -26,13 +26,21 @@
 
   <div class="form-group">
     <label>Includes Food</label>
-    <%= f.text_field :includes_food, placeholder: "HAS FOOD?", class: "form-control" %>
+    <%= f.check_box :includes_food %> HAS FOOD
   </div>
 
   <div class="form-group">
     <label>Includes Drink</label>
-    <%= f.text_field :includes_drinks, placeholder: "HAS DRINK?", class: "form-control" %>
+    <%= f.check_box :includes_drinks %> HAS DRINK
   </div>
+
+  <label>Themes</label>
+
+<%= f.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
+  <div class="form-group">
+    <%= b.check_box(class: "check_box") %> <%= b.object.name %>
+  </div>
+<% end %>
 
   <label>Publish this place?</label>
 

@@ -6,7 +6,9 @@ class EventsController < ApplicationController
     @events = current_user.events
   end
 
-  def show; end
+  def show
+    @themes = @event.themes
+  end
 
   def new
     @event = current_user.events.build
@@ -25,7 +27,7 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    if @event.updatet(event_params)
+    if @event.update(event_params)
       redirect_to @event, notice: "Event updated!"
     else
       render :edit
@@ -44,7 +46,7 @@ class EventsController < ApplicationController
       .permit(
         :name, :description, :location, :price,
         :capacity, :includes_food, :includes_drinks,
-        :starts_at, :ends_at, :active )
+        :starts_at, :ends_at, :active , :theme_ids [])
   end
 
 end
