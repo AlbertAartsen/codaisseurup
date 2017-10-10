@@ -9,11 +9,11 @@ class EventsController < ApplicationController
   def show; end
 
   def new
-    @event = current_user.event.build
+    @event = current_user.events.build
   end
 
   def create
-    @room = current_user.events.build(event_params)
+    @event = current_user.events.build(event_params)
 
     if @event.save
       redirect_to @event, notice: "You made an Event!"
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.updatet(event_params)
-      redirect_to @room, notice: "Event updated!"
+      redirect_to @event, notice: "Event updated!"
     else
       render :edit
     end
