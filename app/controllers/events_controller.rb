@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only [:show, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show]
 
   def index
@@ -44,9 +44,7 @@ class EventsController < ApplicationController
       .permit(
         :name, :description, :location, :price,
         :capacity, :includes_food, :includes_drinks,
-        :starts_at, :ends_at, :active, 
-
-      )
+        :starts_at, :ends_at, :active )
   end
 
 end
