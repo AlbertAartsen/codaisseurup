@@ -13,5 +13,12 @@ has_and_belongs_to_many :themes
   #validates :ends_at, presence: true
   #validates :active, presence: true
 
+  def bargain?
+      price < 4
+    end
+
+    def self.order_by_price
+    order :price
+  end
 
 end

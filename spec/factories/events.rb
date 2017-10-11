@@ -7,7 +7,7 @@ FactoryGirl.define do
     includes_food     true
     includes_drinks   true
     price             { Faker::Commerce.price }
-    user_id           { build(:user) }
+    user              { build(:user) }
 
     trait :active do
       active true
