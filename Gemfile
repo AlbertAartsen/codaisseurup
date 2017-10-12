@@ -53,6 +53,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
+gem 'carrierwave', '0.11.2'
+
 gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3.6'
