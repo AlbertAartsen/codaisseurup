@@ -21,7 +21,7 @@
     <% @themes.each do |theme| %>
       <span class="label label-success"><%= theme.name %></span>
     <% end %>
-    
+
     <!-- Amenities -->
     <h4>Funstuffs</h4>
     <ul class="amenities">
@@ -29,6 +29,18 @@
       <li><%= !@event.includes_drinks ? ("<del>HASDRINK</del>").html_safe : "HASDRINK" %></li>
     </ul>
 
+    <h4>Photos</h4>
+  <% @event.photos.each do |photo| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= image_tag photo.image.thumbnail %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+
+  <div id="photos">
+    <%= render 'photos/list' %>
   </div>
 
 </div>

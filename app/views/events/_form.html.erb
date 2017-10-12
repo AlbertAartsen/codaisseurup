@@ -1,4 +1,4 @@
-<%= form_for @event do |f| %>
+<%= form_for @event,   html: { multipart: true } do |f| %>
   <div class="form-group">
     <label>Event Type</label>
     <%= f.select :name, [["Balloon Party", "Balloon Party"], ["House Party", "House Party"], ["Woordenboekspel & Chill", "Woordenboekspel & Chill"]], id: "name", prompt: "Select Event type", class: "form-control" %>
@@ -14,10 +14,19 @@
     <%= f.select :price, [["1", 1], ["2", 2], ["3", 3], ["4", 4]], prompt: "Select Price", class: "form-control" %>
   </div>
 
+  <label>Photos</label>
+  <div class="form-group">
+    <span class="btn btn-default">
+      Upload Photos
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </span>
+  </div>
+
   <div class="form-group">
     <label>Location</label>
     <%= f.text_field :location, placeholder: "Location", class: "form-control" %>
   </div>
+
 
   <div class="form-group">
     <label>Description</label>
