@@ -33,3 +33,9 @@ starts_at: DateTime.now+1, ends_at: DateTime.now+2, active: true, user: tim, the
 photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dvhogaeis/image/upload/v1507801826/hungry_gxfssj.jpg", event: event3)
 photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dvhogaeis/image/upload/v1507801840/guSMPmh_el7cjl.jpg", event: event3)
 photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dvhogaeis/image/upload/v1507801859/rDcG9V9_j1ym9u.png", event: event3)
+
+
+Registration.create([
+ { event: event, user: bob, price: event.price, guests_count: 1 },
+ { event: event, user: tim, price: event.price, guests_count: 3 },
+ ])
