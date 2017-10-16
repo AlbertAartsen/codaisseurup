@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
-belongs_to :user
+belongs_to :user, optional: true
 has_and_belongs_to_many :themes
-has_many :photos
+has_many :photos,  dependent: :destroy
 has_many :registrations, dependent: :destroy
 has_many :guests, through: :registrations, source: :user
 
@@ -20,8 +20,15 @@ has_many :guests, through: :registrations, source: :user
       price < 4
     end
 
-    def self.order_by_price
+  def self.order_by_price
     order :price
   end
+
+  def self.alphabetical
+    order(name: :asc)
+  end
+
+  scope :published, -> { where(active: true)}
+
 
 end

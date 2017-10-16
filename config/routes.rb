@@ -12,7 +12,13 @@ root to: 'pages#home'
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :photos
 
+  namespace :api do
+    resources :events
+  end
 
+  namespace :api do
+    resources :themes
+  end
 
   get "about" => "pages#about"
 end

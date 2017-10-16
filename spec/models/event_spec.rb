@@ -1,6 +1,7 @@
 require 'rails_helper'
 
   RSpec.describe Event, type: :model do
+
     describe "validations" do
       let(:user) { create :user }
       let(:event) { create :event, user: user }
@@ -13,6 +14,7 @@ require 'rails_helper'
     it { is_expected.to validate_presence_of(:location)}
     it { is_expected.to validate_presence_of(:price)}
     it { is_expected.to validate_presence_of(:capacity)}
+  
 
     describe "#bargain?" do
       let(:bargain_event) { create :event, price: 3 }
@@ -52,6 +54,17 @@ require 'rails_helper'
 
           it { is_expected.to have_and_belong_to_many :themes }
         end
+
+        describe ".alphabetical" do
+          let!(:event1) {create :event, name:"z" }
+          let!(:event2) {create :event, name:"a" }
+          let!(:event3) {create :event, name:"b" }
+
+          it "returns event name in alphabetical order" do
+            expect(Event.alphabetical).to match_array([event2, event3, event1])
+          end
+        end
+
 
         describe "association with registration" do
           let(:guest_user) { create :user, email: "guest@user.com" }
